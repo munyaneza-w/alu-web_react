@@ -1,0 +1,45 @@
+/* App-body */
+
+.App-body {
+  min-height: 60vmin;
+  padding: 32px;
+  /* display: flex;
+  flex-direction: column;
+  gap: 8px; */
+}
+
+.App-body p {
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.App-body label span {
+  padding-left: 2px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.App-body input {
+  /* display: block; */
+  height: 32px;
+  line-height: 16px;
+  font-size: 16px;
+  padding-left: 2px;
+  margin-top: 2px;
+}
+
+.App-body button {
+  border-radius: 25px;
+  width: 150px;
+  height: 32px;
+  background-color: white; /* #ff4242 */
+  font-size: 24px;
+  border: .5px solid lightgrey;
+}

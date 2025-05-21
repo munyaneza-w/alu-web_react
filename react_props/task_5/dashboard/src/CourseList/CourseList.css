@@ -1,0 +1,14 @@
+#CourseList {
+    width: 90vw;
+    margin: 0 5vw;
+    border: 1px solid grey;
+}
+
+tr th {
+    border-bottom: 1px solid grey;
+}
+
+tbody,
+thead tr:nth-child(2) {
+    text-align: left;
+}

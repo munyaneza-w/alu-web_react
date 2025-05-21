@@ -1,0 +1,57 @@
+{
+  "name": "task_5",
+  "version": "1.0.0",
+  "description": "task 5 of 0x02-react intro",
+  "main": "./src/index.js",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/setupTests.js"
+    ],
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetMock.js",
+      "\\.(css|less|scss|sass)$": "<rootDir>/assetMock.js"
+    }
+  },
+  "scripts": {
+    "build": "webpack --config ./config/webpack.config.js",
+    "start-dev": "webpack serve -c ./config/webpack.config.js --open",
+    "start": "webpack-dev-server --mode development --config config/webpack.config.js",
+    "test": "jest"
+  },
+  "author": "Zac W",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.16.0",
+    "babel-jest": "^27.3.1",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "image-webpack-loader": "^7.0.1",
+    "jest": "^27.3.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^3.11.3"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  }
+}

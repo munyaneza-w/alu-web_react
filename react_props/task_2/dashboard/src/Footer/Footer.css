@@ -1,0 +1,10 @@
+/* App-footer */
+
+.App-footer {
+  font-style: italic;
+  border-top: 4px solid var(--holb-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 5vmin;
+}
