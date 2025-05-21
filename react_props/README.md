@@ -2,7 +2,7 @@
 
 ## Resources
 
-### Read or watch:
+### Read or watch  :
 
 - [React Official Website](https://intranet.aluswe.com/rltoken/n0AnxSMdIBw4P9SbH9nyMA)
 - [Getting started with React](https://intranet.aluswe.com/rltoken/hh_kBefANCsOrwuOb3RCAg)
