@@ -1,140 +1,103 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, css, reset } from 'aphrodite';
+import React, { Component } from "react";
+import { StyleSheet, css } from "aphrodite";
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      enableSubmit: false,
+    };
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+  }
+
+  handleLoginSubmit(event) {
+    event.preventDefault();
+
+    const { email, password } = this.state;
+
+    this.props.logIn(email, password);
+  }
+
+  handleChangeEmail(event) {
+    const { value } = event.target;
+    const { password } = this.state;
+
+    if (value !== "" && password !== "") this.setState({ enableSubmit: true });
+    else this.setState({ enableSubmit: false });
+
+    this.setState({ email: event.target.value });
+  }
+
+  handleChangePassword(event) {
+    const { value } = event.target;
+    const { email } = this.state;
+
+    if (email !== "" && value !== "") this.setState({ enableSubmit: true });
+    else this.setState({ enableSubmit: false });
+
+    this.setState({ password: event.target.value });
+  }
+
+  render() {
+    return (
+      <div className={css(styles.login)}>
+        <p>Login to access the full dashboard</p>
+        <form action="" onSubmit={this.handleLoginSubmit}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className={css(styles.loginInput)}
+            value={this.state.email}
+            onChange={this.handleChangeEmail}
+          />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className={css(styles.loginInput)}
+            value={this.state.password}
+            onChange={this.handleChangePassword}
+          />
+          <input type="submit" disabled={!this.state.enableSubmit} />
+        </form>
+      </div>
+    );
+  }
+}
+
+const screenSize = {
+  small: "@media screen and (max-width: 900px)",
+};
 
 const styles = StyleSheet.create({
-    appBody: {
-        padding: '0px 32px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+  login: {
+    margin: "50px",
+    flexGrow: 1,
+    [screenSize.small]: {
+      marginTop: "10px",
+      marginLeft: 0,
+      marginRight: 0,
+      marginBottom: 0,
     },
+  },
 
-    appBodyParagraph: {
-        fontWeight: 'bold',
-        marginBottom: '8px',
+  loginInput: {
+    marginLeft: "10px",
+    marginRight: "20px",
+    [screenSize.small]: {
+      display: "block",
+      marginLeft: 0,
+      marginTop: "10px",
+      marginBottom: "10px",
     },
-
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        gap: '8px',
-        alignItems: 'flex-start',
-    },
-
-    formLabel: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignContent: 'center',
-        width: '100%',
-        alignItems: 'baseline',
-    },
-
-    appBodyLabelSpan: {
-        paddingLeft: '2px',
-        fontWeight: 'bold',
-        marginRight: '16px',
-    },
-
-    appBodyInput: {
-        /* display: block, */
-        height: '32px',
-        lineHeight: '16px',
-        fontSize: '16px',
-        paddingLeft: '2px',
-        marginTop: '2px',
-    },
-
-    appBodyButton: {
-        borderRadius: '25px',
-        width: '150px',
-        height: '32px',
-        backgroundColor: 'white', /* #ff4242 */
-        fontSize: '24px',
-        border: '.5px solid lightgrey',
-        alignSelf: 'center',
-    },
+  },
 });
-
-function Login({ logIn }) {
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ enableSubmit, setEnableSubmit ] = useState(false);
-
-    function handleLoginSubmit(e) {
-        e.preventDefault();
-        logIn(email, password);
-        console.log('Logged in!');
-    }
-
-    function handleChangeEmail(e) {
-        setEmail(e.target.value);
-    }
-
-    useEffect(() => {
-        resetEnableSubmit();
-    }, [ email ]);
-
-    function handleChangePassword(e) {
-        setPassword(e.target.value);
-    }
-
-    useEffect(() => {
-        resetEnableSubmit();
-    }, [ password ]);
-
-    function resetEnableSubmit() {
-        if (email !== '' && password !== '') {
-            // disabled = false
-            setEnableSubmit(true);
-            return false;
-        } else {
-            // disabled = true
-            setEnableSubmit(false);
-            return true
-        }
-    }
-
-    return (
-        <div className={ css(styles.appBody) } id="Login">
-            <p className={ css(styles.appBodyParagraph) }>Login to access the full dashboard</p>
-            <form
-                className={ css(styles.form) }
-                onSubmit={ handleLoginSubmit }>
-                <label
-                    htmlFor="email"
-                    className={ css(styles.formLabel) }
-                >
-                    <span className={ css(styles.appBodyLabelSpan) }>Email:</span>
-                    <input
-                        className={ css(styles.appBodyInput) }
-                        type="email"
-                        name="email"
-                        id="email"
-                        onChange={ handleChangeEmail } />
-                </label>
-
-                <label htmlFor="password"
-                    className={ css(styles.formLabel) }>
-                    <span className={ css(styles.appBodyLabelSpan) }>Password:</span>
-                    <input
-                        className={ css(styles.appBodyInput) }
-                        type="password"
-                        name="password"
-                        id="pwd"
-                        onChange={ handleChangePassword } />
-                </label>
-
-                <input
-                    type='submit'
-                    id='submit'
-                    value='OK'
-                    className={ css(styles.appBodyButton) }
-                    disabled={ !enableSubmit }
-                    ></input>
-            </form>
-        </div>
-    );
-}
 
 export default Login;

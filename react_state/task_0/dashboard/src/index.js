@@ -1,25 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App/App';
-import { Notifications } from './Notifications/Notifications';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App/App";
 
-const rootId = document.getElementById("root");
-// isLoggedIn={true}
 ReactDOM.render(
-  <>
-      <App />
-    </>,
-    rootId
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-if (module.hot && process.env.NODE_ENV === "development") {
-  module.hot.accept("./App/App", () => {
-    const NextApp = require("./App/App").default;
-    ReactDOM.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>,
-      rootId
-    );
-  });
-}

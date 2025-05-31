@@ -1,20 +1,16 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Footer from './Footer';
-import { StyleSheetTestUtils } from 'aphrodite';
+import { shallow } from "enzyme";
+import React from "react";
+import Footer from "./Footer";
 
-beforeEach(() => {
-    StyleSheetTestUtils.suppressStyleInjection();
-});
-
-describe('<Footer />', () => {
-    it('renders an <Footer /> component', () => {
-        const wrapper = shallow(<Footer />);
-        expect(wrapper).toHaveLength(1);
-    });
-
-    it('renders an <Footer /> component checking for App-Footer', () => {
-        const wrapper = shallow(<Footer />);
-        expect(wrapper.find('div p').text()).toContain('Copyright');
-    });
+describe("<Footer />", () => {
+  it("Footer renders without crashing", () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.exists()).toEqual(true);
+  });
+  it("Verify that the components at the very least render the text “Copyright”", () => {
+    const wrapper = shallow(<Footer />);
+    wrapper.update();
+    expect(wrapper.find("div.footer p")).toHaveLength(1);
+    expect(wrapper.find("div.footer p").text()).toContain("Copyright");
+  });
 });
